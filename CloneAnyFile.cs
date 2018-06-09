@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace CloneAnyFile
 {
@@ -31,8 +32,7 @@ namespace CloneAnyFile
 			// dlg.InitialDirectory = Environment.ExpandEnvironmentVariables(@"%UserProfile%\Desktop\");
 			dlg.InitialDirectory = @"C:\Webroot\Apache2433\htdocs";
 			dlg.Filter = "PHP (*.php;*.phtml;*.twig,*.tpl,*.ctp)|*.php;*.phtml;*.twig;*.tpl;*.ctp|"
-							+	"	HTML (*.html;*.htm;*.twig,*.tpl,*.ctp)|*.html;*.htm;*.twig;*.tpl;*.ctp";
-            dlg.ShowDialog();
+						+ "HTML (*.html;*.htm;*.twig,*.tpl,*.ctp)|*.html;*.htm;*.twig;*.tpl;*.ctp";
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
@@ -45,11 +45,14 @@ namespace CloneAnyFile
                 string destFile = Path.Combine(Path.GetDirectoryName(origFileName), Path.GetFileName(cloneFileName));
 				File.Copy(dlg.FileName, destFile, true);
             }
+			MessageBox.Show("File cloning was successful", "File Clone Status");
+			System.Windows.Forms.Application.Exit();
         }
 		[STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
     }
