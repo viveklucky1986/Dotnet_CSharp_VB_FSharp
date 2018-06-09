@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace CleanUpJunkTempFiles
+namespace CleanupJunkTempFiles
 {
     class Program
     {
