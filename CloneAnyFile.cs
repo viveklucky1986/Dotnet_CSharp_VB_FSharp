@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Windows;
 using System.Drawing;
+using System.Diagnostics;
 using System.Windows.Input;
 using System.Windows.Forms;
 using System.ComponentModel;
@@ -44,8 +45,9 @@ namespace CloneAnyFile
 				string cloneFileName = origFileNameWithNoExt + '_' + timestampSuffix + origFileExt + "-clone";
                 string destFile = Path.Combine(Path.GetDirectoryName(origFileName), Path.GetFileName(cloneFileName));
 				File.Copy(dlg.FileName, destFile, true);
+				MessageBox.Show("File cloning was successful", "File Clone Status");
+				Process.Start("explorer.exe", Path.GetDirectoryName(origFileName));
             }
-			MessageBox.Show("File cloning was successful", "File Clone Status");
 			System.Windows.Forms.Application.Exit();
         }
 		[STAThread]
