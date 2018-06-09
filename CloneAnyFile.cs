@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Linq;
 using System.Windows;
 using System.Drawing;
 using System.Diagnostics;
@@ -15,6 +16,9 @@ namespace CloneAnyFile
     public partial class Form1 : Form
     {
 		public Button button1;
+		[DllImport("kernel32.dll", SetLastError=true, ExactSpelling=true)]
+		static extern bool FreeConsole();
+		
         public Form1()
         {
             button1 = new Button();
@@ -53,6 +57,7 @@ namespace CloneAnyFile
 		[STAThread]
         static void Main()
         {
+			FreeConsole();
             Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
