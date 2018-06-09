@@ -14,7 +14,7 @@ public class WinForm : Form
     {
     }
 	
-	[DllImport("kernel32.dll", SetLastError=true, ExactSpelling=true)]
+	DllImport("kernel32.dll", SetLastError=true, ExactSpelling=true)]
     static extern bool FreeConsole();
 	
     static void Main(string[] args)
